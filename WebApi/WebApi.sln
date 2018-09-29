@@ -1,0 +1,17 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi.csproj", "{CED3FF4E-88DC-4CA9-9E31-24E5F12359BE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CED3FF4E-88DC-4CA9-9E31-24E5F12359BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CED3FF4E-88DC-4CA9-9E31-24E5F12359BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CED3FF4E-88DC-4CA9-9E31-24E5F12359BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CED3FF4E-88DC-4CA9-9E31-24E5F12359BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
