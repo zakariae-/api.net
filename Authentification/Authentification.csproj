@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.4" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="2.2.0" />
     <PackageReference Include="IdentityServer4.AspNetIdentity" Version="2.1.0" />
   </ItemGroup>
@@ -17,5 +17,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WebUtils\WebUtils.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Migrations\20181006113745_InitialCreate.cs" />
+    <Compile Remove="Migrations\20181006113745_InitialCreate.Designer.cs" />
   </ItemGroup>
 </Project>
