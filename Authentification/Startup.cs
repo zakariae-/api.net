@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Authentification.Data;
+using Authentification.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using WebUtils.Config;
 using WebUtils.Middlewares;
 
 namespace Authentification
@@ -77,6 +80,17 @@ namespace Authentification
         }
         private void ConfigureIdentity(IServiceCollection services, string identityConnectionString)
         {
+            services.AddIdentity<ApplicationUser, IdentityRole>();
+            // configure identity server with in-memory stores, keys, clients and scopes
+            services.AddIdentityServer()
+                    .AddDeveloperSigningCredential()
+                    .AddInMemoryPersistedGrants()
+                    .AddInMemoryIdentityResources(IdentityServerConfig.GetIdentityResources())
+                    .AddInMemoryApiResources(IdentityServerConfig.GetApiResources())
+                    .AddInMemoryClients(IdentityServerConfig.GetClients())
+                    .AddAspNetIdentity<ApplicationUser>();
+
+            services.AddIdentityAuthentification(Environment, Configuration["AuthentificationApi:Api"], Configuration["AuthentificationApi:Url"]);
         }
     }
 }

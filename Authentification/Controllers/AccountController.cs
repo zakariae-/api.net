@@ -2,16 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using WebUtils.Filters;
 
 namespace Authentification.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ValuesController : ControllerBase
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/account")]
+    [Authorize]
+    [ValidateModel]
+    public class AccountController : Controller
     {
         // GET api/values
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult<IEnumerable<string>> Get()
         {
             return new string[] { "value1", "value2" };
@@ -26,6 +31,7 @@ namespace Authentification.Controllers
 
         // POST api/values
         [HttpPost]
+        [AllowAnonymous]
         public void Post([FromBody] string value)
         {
         }
