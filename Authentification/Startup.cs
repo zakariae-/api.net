@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
+using Asset.Services;
 using Authentification.Data;
 using Authentification.Models;
+using Authentification.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -17,6 +20,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using WebUtils.Config;
 using WebUtils.Middlewares;
+
 
 namespace Authentification
 {
@@ -52,6 +56,8 @@ namespace Authentification
 
             services.AddApiVersioning();
 
+            services.AddAssetServices();
+
             services.Configure<ApplicationSettings>(Configuration);
         }
 
@@ -83,7 +89,8 @@ namespace Authentification
             services.AddIdentity<ApplicationUser, IdentityRole>();
             // configure identity server with in-memory stores, keys, clients and scopes
             services.AddIdentityServer()
-                    .AddDeveloperSigningCredential()
+                    .AddCertificate(isDev: Environment.IsDevelopment(), certificateKey: Configuration.GetValue<string>("Certificates"))
+                    .AddOperationalStore(identityConnectionString: identityConnectionString, defaultSchema: ApplicationDbContext.IdentitySchema)
                     .AddInMemoryPersistedGrants()
                     .AddInMemoryIdentityResources(IdentityServerConfig.GetIdentityResources())
                     .AddInMemoryApiResources(IdentityServerConfig.GetApiResources())

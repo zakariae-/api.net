@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Authentification.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebUtils.Filters;
@@ -32,7 +33,7 @@ namespace Authentification.Controllers
         // POST api/values
         [HttpPost]
         [AllowAnonymous]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] RegisterViewModel value)
         {
         }
 
