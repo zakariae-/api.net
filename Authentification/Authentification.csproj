@@ -23,7 +23,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WebUtils\WebUtils.csproj" />
-    <ProjectReference Include="..\Services\Asset.Services.csproj" />
+    <ProjectReference Include="..\Asset.Services\Asset.Services.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Migrations\20181006113745_InitialCreate.cs" />

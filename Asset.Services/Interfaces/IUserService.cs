@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace Asset.Services.Interface
+namespace Asset.Services.Interfaces
 {
     public interface IUserService
     {

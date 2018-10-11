@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Asset.Services.Interface;
+using Asset.Services.Interfaces;
 
 namespace Asset.Services.Services
 {

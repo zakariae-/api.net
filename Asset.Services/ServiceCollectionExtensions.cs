@@ -1,7 +1,7 @@
 ﻿using System;
-using Microsoft.Extensions.DependencyInjection;
-using Asset.Services.Interface;
+using Asset.Services.Interfaces;
 using Asset.Services.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Asset.Services
 {
