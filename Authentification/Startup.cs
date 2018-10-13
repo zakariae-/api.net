@@ -57,7 +57,7 @@ namespace Authentification
 
             services.AddApiVersioning();
 
-            services.AddAsset(ServiceLifetime.Scoped);
+            services.AddAsset(Configuration, ServiceLifetime.Scoped);
             services.AddAssetServices();
 
             services.Configure<ApplicationSettings>(Configuration);

@@ -1,4 +1,6 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Commun.Infrastructure.Extensions
@@ -7,9 +9,9 @@ namespace Commun.Infrastructure.Extensions
     {
         public static IServiceCollection addService<TService, TImplementation>(this IServiceCollection services, ServiceLifetime lifetime)
             where TService : class
-            where TImplementation: class, TService
+            where TImplementation : class, TService
         {
-            switch(lifetime)
+            switch (lifetime)
             {
                 case ServiceLifetime.Scoped:
                     services.AddScoped<TService, TImplementation>();
@@ -25,6 +27,24 @@ namespace Commun.Infrastructure.Extensions
                     throw notImplementedException;
             }
             return services;
+        }
+
+        public static void AddDbConfiguration<TDbContext>(this IServiceCollection services,
+            IConfiguration configuration,
+            string connectionStringName,
+            ServiceLifetime lifeTime) where TDbContext : DbContext
+        {
+            var connectionString = configuration.GetConnectionString(connectionStringName);
+            if (connectionString == null)
+            {
+                throw new Exception($"Missing configuration : ConnectionStrings.{connectionStringName}");
+            }
+
+            services.AddEntityFrameworkSqlServer()
+                .AddDbContext<TDbContext>(options =>
+                {
+                    options.UseSqlServer(connectionString);
+                }, lifeTime);
         }
     }
 }
