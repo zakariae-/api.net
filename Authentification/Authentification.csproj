@@ -24,6 +24,7 @@
   <ItemGroup>
     <ProjectReference Include="..\WebUtils\WebUtils.csproj" />
     <ProjectReference Include="..\Asset.Services\Asset.Services.csproj" />
+    <ProjectReference Include="..\Asset.Infrastructure\Asset.Infrastructure.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Migrations\20181006113745_InitialCreate.cs" />

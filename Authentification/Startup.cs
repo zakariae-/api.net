@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using Asset.Infrastructure;
 using Asset.Services;
 using Authentification.Data;
 using Authentification.Models;
@@ -56,6 +57,7 @@ namespace Authentification
 
             services.AddApiVersioning();
 
+            services.AddAsset(ServiceLifetime.Scoped);
             services.AddAssetServices();
 
             services.Configure<ApplicationSettings>(Configuration);
