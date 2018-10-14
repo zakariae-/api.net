@@ -13,4 +13,7 @@
     <Folder Include="Interfaces\" />
     <Folder Include="Services\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Asset.Core\Asset.Core.csproj" />
+  </ItemGroup>
 </Project>

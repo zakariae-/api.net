@@ -8,4 +8,7 @@
     <Folder Include="Interfaces\" />
     <Folder Include="Entities\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common.Core\Common.Core.csproj" />
+  </ItemGroup>
 </Project>

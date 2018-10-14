@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Asset.Infrastructure;
+using Asset.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -53,6 +55,11 @@ namespace WebApi
 
             services.AddCors();
             services.AddOptions();
+
+            services.Configure<ApplicationSettings>(Configuration);
+
+            services.AddAsset(Configuration, ServiceLifetime.Scoped);
+            services.AddAssetServices();
 
             ConfigureAuth(services);
         }

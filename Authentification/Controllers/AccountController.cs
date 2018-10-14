@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Asset.Services.Interfaces;
 using Authentification.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -15,11 +16,19 @@ namespace Authentification.Controllers
     [ValidateModel]
     public class AccountController : Controller
     {
+        private readonly IUserService _userService;
+
+        public AccountController(IUserService userService)
+        {
+            _userService = userService;
+        }
+
         // GET api/values
         [HttpGet]
         [AllowAnonymous]
         public ActionResult<IEnumerable<string>> Get()
         {
+
             return new string[] { "value1", "value2" };
         }
 
